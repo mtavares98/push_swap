@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 17:42:50 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/07 22:27:38 by mtavares         ###   ########.fr        #
+#    Updated: 2022/06/07 23:51:36 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,5 +52,5 @@ re:			fclean all
 
 reb:	fclean b
 
-.SILENT: all clean fclean re b reb %.o
+.SILENT: all clean fclean re b reb
 .PHONY: all clean fclean re b reb
