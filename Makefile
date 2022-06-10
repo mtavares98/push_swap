@@ -6,27 +6,27 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 22:39:34 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/07 23:54:41 by mtavares         ###   ########.fr        #
+#    Updated: 2022/06/10 18:01:47 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	$(foreach dir,$(SRCS_DIR),$(wildcard $(dir)/*.c))
+SRCS		=	$(foreach dir, $(SRCS_DIR), $(wildcard $(dir)/*.c))
 
 SRCS_DIR	=	srcs
 
-OBJS		=	$(subst $(SRCS_DIR),$(OBJS_DIR),$(SRCS:.c=.o))
+OBJS		=	$(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 
 OBJS_DIR	=	objs
 
 LIBFT		=	libs/libft/libft.a
 
-PRINTF		=	libs/printf/libftprintf.a
+PRINTF		=	libs/printf_fd/libprintf_fd.a
 
 INCLUDE		=	-I include/push_swap.h
 
 NAME		=	push_swap
 
-CC			=	clang
+CC			=	clang -g
 
 CFLAGS		=	-Wall -Wextra -Werror
 
@@ -45,17 +45,17 @@ $(LIBFT):
 		@make b -C libs/libft
 
 $(PRINTF):
-		make -C libs/printf
+		make -C libs/printf_fd
 
 clean:
 		$(RM) $(OBJS_DIR)
 		make clean -C libs/libft
-		make clean -C libs/printf
+		make clean -C libs/printf_fd
 
 fclean:		clean
 		$(RM) $(NAME)
 		make fclean -C libs/libft
-		make fclean -C libs/printf
+		make fclean -C libs/printf_fd
 
 re:			fclean all
 

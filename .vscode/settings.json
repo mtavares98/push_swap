@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"file1": "plaintext",
+		"push_swap.h": "c"
+	}
+}

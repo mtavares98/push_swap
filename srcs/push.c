@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 11:00:19 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/10 17:51:53 by mtavares         ###   ########.fr       */
+/*   Created: 2022/06/10 17:44:38 by mtavares          #+#    #+#             */
+/*   Updated: 2022/06/10 18:40:57 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+/* void	push(t_stack *a, t_stack *b)
 {
-	if (lst)
-	{
-		if (*lst)
-			new->next = *lst;
-		*lst = new;
-	}
-}
+	int	tmp;
+
+	tmp = b->content;
+	ft_lstadd_front(&a, b->content);
+	b->content = b->next->content;
+} */

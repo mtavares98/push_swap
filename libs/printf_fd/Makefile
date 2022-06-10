@@ -5,38 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/11 10:01:12 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/07 22:35:54 by mtavares         ###   ########.fr        #
+#    Created: 2022/06/08 14:39:43 by mtavares          #+#    #+#              #
+#    Updated: 2022/06/08 14:44:02 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= ft_printf.c ft_put.c
+SRCS		=	$(foreach dir,$(SRCS_DIR),$(wildcard $(dir)/*.c))
 
-OBJS	= $(SRCS:.c=.o)
+SRCS_DIR	=	srcs
 
-NAME	= libftprintf.a
+OBJS		=	$(subst $(SRCS_DIR),$(OBJS_DIR),$(SRCS:.c=.o))
 
-CC		= gcc
+OBJS_DIR	=	objs
 
-CFLAGS	= -Wall -Wextra -Werror -I.
+NAME		=	libprintf_fd.a
 
-RM		= rm -rf
+CC			=	clang
 
-all:	$(NAME)
+CFLAGS		=	-Wall -Wextra -Werror
 
-%.o:	%.c
-		@$(CC) $(CFLAGS) -c $< -o $@
+RM			=	rm -rf
+
+AR			=	ar rcs
+
+all:		$(NAME)
+
+$(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
+		@mkdir -p $(OBJS_DIR)
+		@$(CC) $(CFLAGS) $() -c $< -o $@
 
 $(NAME):	$(OBJS)
-		@ar rcs $(NAME) $(OBJS)
+		@$(AR) $(NAME) $(OBJS)
 
 clean:
-		$(RM) $(OBJS)
+		$(RM) $(OBJS_DIR)
 
-fclean:	clean
+fclean:		clean
 		$(RM) $(NAME)
 
-re:		fclean all
+re:			fclean all
 
 .SILENT: all clean fclean re
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 
