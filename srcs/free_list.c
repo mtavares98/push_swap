@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 22:56:34 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/12 01:58:00 by mtavares         ###   ########.fr       */
+/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
+/*   Updated: 2022/06/12 01:43:08 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int ac, char **av)
+void	free_lst(t_list **stack)
 {
 	t_list	*tmp;
-	t_list	*a;
 
-	if (ac < 2)
+	if (stack)
 	{
-		printf_fd(1, "Wrong number of arguments\n");
-		return (0);
+		if (*stack)
+		{
+			while ((*stack)->next)
+			{
+				tmp = (*stack);
+				(*stack) = (*stack)->next;
+				free(tmp);
+			}
+		}
 	}
-	parse_args(&a, av);
-	tmp = a;
-	while (tmp)
-	{
-		printf_fd(1, "%i\n", tmp->content);
-		tmp = tmp->next;
-	}
-	return (0);
+}
+
+void	exit_prog(t_list **a, int i)
+{
+	free_lst(a);
+	exit(i);
 }

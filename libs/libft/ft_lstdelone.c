@@ -6,13 +6,13 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:11:56 by mtavares          #+#    #+#             */
-/*   Updated: 2022/02/27 17:06:46 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:38:00 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstdelone(t_list *lst, void (*del)(int))
 {
 	del(lst->content);
 	free(lst);

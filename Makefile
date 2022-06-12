@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 22:39:34 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/10 18:01:47 by mtavares         ###   ########.fr        #
+#    Updated: 2022/06/11 22:37:42 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ OBJS_DIR	=	objs
 LIBFT		=	libs/libft/libft.a
 
 PRINTF		=	libs/printf_fd/libprintf_fd.a
-
-INCLUDE		=	-I include/push_swap.h
 
 NAME		=	push_swap
 
@@ -39,13 +37,13 @@ $(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
 		@$(CC) $(CFLAGS) $() -c $< -o $@
 
 $(NAME):	$(LIBFT) $(PRINTF) $(OBJS)
-		@$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
+		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(LIBFT):
 		@make b -C libs/libft
 
 $(PRINTF):
-		make -C libs/printf_fd
+		@make -C libs/printf_fd
 
 clean:
 		$(RM) $(OBJS_DIR)

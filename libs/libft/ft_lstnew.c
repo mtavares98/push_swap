@@ -6,13 +6,13 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:41:14 by mtavares          #+#    #+#             */
-/*   Updated: 2022/02/27 10:57:40 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:31:39 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 

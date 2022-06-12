@@ -6,17 +6,19 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:44:38 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/10 18:40:57 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/11 22:05:45 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/* void	push(t_stack *a, t_stack *b)
+void	push(t_list **stack1, t_list **stack2)
 {
-	int	tmp;
+	t_list	*tmp;
 
-	tmp = b->content;
-	ft_lstadd_front(&a, b->content);
-	b->content = b->next->content;
-} */
+	if (!(*stack2))
+		return ;
+	tmp = (*stack2)->next;
+	ft_lstadd_front(stack1, (*stack2));
+	(*stack2) = tmp;
+}

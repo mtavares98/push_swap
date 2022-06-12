@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:50 by mtavares          #+#    #+#             */
-/*   Updated: 2022/03/13 01:19:04 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/11 13:39:41 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 }		t_list;
 
@@ -61,12 +61,12 @@ void	ft_putnbr_fd(int n, int fd);
 
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(int));
+void	ft_lstdelone(t_list *lst, void (*del)(int));
+void	ft_lstiter(t_list *lst, int (*f)(int));
 t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int));
+t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
 
 #endif
