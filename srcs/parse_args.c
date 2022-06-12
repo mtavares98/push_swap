@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/12 01:55:46 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/12 18:13:21 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static long	atoi_parse(char **str)
 	}
 	while ((**str > 8 && **str < 14) || **str == 32)
 		*str += 1;
-	if (ft_isalpha((int)**str))
+	if (!(**str >= '0' && **str <= '9') && **str != '\0')
 		return (2147483648);
 	return (n);
 }

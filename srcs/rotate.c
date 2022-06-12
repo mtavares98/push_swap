@@ -6,25 +6,45 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:17:10 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/11 22:06:03 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/12 16:53:37 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	rotate(t_list **stack)
+void	rotate_a(t_list **a)
 {
 	t_list	*tmp;
 
-	tmp = (*stack)->next;
-	ft_lstadd_back(&tmp, (*stack));
-	(*stack) = tmp;
-	tmp = ft_lstlast((*stack));
-	tmp->next = NULL;
+	tmp = (*a)->next;
+	ft_lstadd_back(&tmp, *a);
+	(*a)->next = NULL;
+	*a = tmp;
+	printf_fd(1, "ra\n");
 }
 
-void	rotate_all(t_list **stack1, t_list **stack2)
+void	rotate_b(t_list **b)
 {
-	rotate(stack1);
-	rotate(stack2);
+	t_list	*tmp;
+
+	tmp = (*b)->next;
+	ft_lstadd_back(&tmp, *b);
+	(*b)->next = NULL;
+	*b = tmp;
+	printf_fd(1, "rb\n");
+}
+
+void	rotate_all(t_list **a, t_list **b)
+{
+	t_list	*tmp;
+
+	tmp = (*a)->next;
+	ft_lstadd_back(&tmp, *a);
+	(*a)->next = NULL;
+	*a = tmp;
+	tmp = (*b)->next;
+	ft_lstadd_back(&tmp, *b);
+	(*b)->next = NULL;
+	*b = tmp;
+	printf_fd(1, "rr\n");
 }

@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   is_ordered.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 19:17:53 by mtavares          #+#    #+#             */
-/*   Updated: 2022/03/04 17:52:56 by mtavares         ###   ########.fr       */
+/*   Created: 2022/06/12 14:11:59 by mtavares          #+#    #+#             */
+/*   Updated: 2022/06/12 14:17:06 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/push_swap.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t len)
+static int	is_ordered(t_list *stack)
 {
-	char		*d;
-	const char	*s;
+	while (stack->next)
+	{
+		if (stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
 
-	d = dest;
-	s = src;
-	if (!d && !s)
-		return (NULL);
-	if (d < s)
-	{
-		while (len--)
-			*d++ = *s++;
-	}
-	else
-	{
-		d = d + (len - 1);
-		s = s + (len - 1);
-		while (len--)
-			*d-- = *s--;
-	}
-	return (dest);
+int	is_finished(t_list *a, t_list *b)
+{
+	if (is_ordered(a) && !b)
+		return (1);
+	return (0);
 }

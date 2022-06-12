@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/12 01:43:08 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/12 13:36:22 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_lst(t_list **stack)
 	{
 		if (*stack)
 		{
-			while ((*stack)->next)
+			while ((*stack))
 			{
 				tmp = (*stack);
 				(*stack) = (*stack)->next;

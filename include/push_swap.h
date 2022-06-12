@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:51:05 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/12 01:41:04 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/12 16:34:50 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,20 @@
 /* Functions */
 
 void	exit_prog(t_list **a, int i);
+int		is_finished(t_list *a, t_list *b);
 void	parse_args(t_list **a, char **av);
-void	swap(t_list **stack);
-void	swap(t_list **stack);
-void	push(t_list **stack1, t_list **stack2);
-void	rotate(t_list **stack);
-void	rotate_all(t_list **stack1, t_list **stack2);
-void	rotate_inv(t_list **stack1);
-void	rotate_inv_all(t_list **stack1, t_list **stack2);
+void	alogoritm_3(t_list **a);
+void	swap_a(t_list **a);
+void	swap_b(t_list **b);
+void	swap_all(t_list **a, t_list **b);
+void	push_a(t_list **a, t_list **b);
+void	push_b(t_list **b, t_list **a);
+void	rotate_a(t_list **a);
+void	rotate_b(t_list **b);
+void	rotate_all(t_list **a, t_list **b);
+void	rotate_inv_a(t_list **a);
+void	rotate_inv_b(t_list **b);
+void	rotate_inv_all(t_list **a, t_list **b);
 void	free_lst(t_list **stack);
 
 #endif
