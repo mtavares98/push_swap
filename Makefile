@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 22:39:34 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/13 14:53:28 by mtavares         ###   ########.fr        #
+#    Updated: 2022/06/14 00:52:48 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all:		$(NAME)
 
 $(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
 		@mkdir -p $(OBJS_DIR)
-		@$(CC) $(CFLAGS) $() -c $< -o $@
+		@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(LIBFT) $(PRINTF) $(OBJS)
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)

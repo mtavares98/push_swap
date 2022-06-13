@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 17:42:50 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/13 15:06:32 by mtavares         ###   ########.fr        #
+#    Updated: 2022/06/14 00:53:07 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,18 +28,21 @@ CC 				=	gcc
 
 INCLUDE 		=	libft.h
 
-CFLAGS			=	-Wall -Werror -Wextra -I.
+CFLAGS			=	-Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+		@ar rcs $(NAME) $(OBJS)
+
+%.o:	%.c
+		@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+		@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all
 
