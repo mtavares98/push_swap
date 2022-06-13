@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:16:57 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:23:17 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	parse_args(t_list **a, char **av)
 		{
 			n = atoi_parse(&av[i]);
 			if (n > INT_MAX)
-				exit_prog(a, 1);
+				exit_prog(a, NULL, 1);
 			if (b && duplicate(a, n))
-				exit_prog(a, i);
+				exit_prog(a, NULL, 1);
 			ft_lstadd_back(a, ft_lstnew(n));
 			b = 1;
 		}

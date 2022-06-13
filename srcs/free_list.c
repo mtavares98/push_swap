@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:21:15 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	free_lst(t_list **stack)
 	}
 }
 
-void	exit_prog(t_list **a, int i)
+void	exit_prog(t_list **a, t_list **b, int i)
 {
 	if (i != 0)
 		printf_fd(2, "Error\n");
 	free_lst(a);
+	free_lst(b);
 	exit(i);
 }

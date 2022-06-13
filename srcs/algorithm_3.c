@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algoritm_3.c                                       :+:      :+:    :+:   */
+/*   algorithm_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 14:46:54 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/12 16:34:10 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/13 22:00:07 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	have_max_min(t_list *a, int *max, int *min)
+void	have_max_min(t_list *a, int *max, int *min)
 {
 	while (a)
 	{
@@ -24,7 +24,7 @@ static void	have_max_min(t_list *a, int *max, int *min)
 	}
 }
 
-void	alogoritm_3(t_list **a)
+void	algorithm_3(t_list **a)
 {
 	int	n[3];
 	int	max;
