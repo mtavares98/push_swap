@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/17 12:31:40 by mtavares          #+#    #+#             */
+/*   Updated: 2022/02/23 13:37:46 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_list	*tmp;
-
-	if (stack)
-	{
-		if (*stack)
-		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
-		}
-	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	write(fd, &c, 1);
 }

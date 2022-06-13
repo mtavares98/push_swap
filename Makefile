@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 22:39:34 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/11 22:37:42 by mtavares         ###   ########.fr        #
+#    Updated: 2022/06/13 14:53:28 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(NAME):	$(LIBFT) $(PRINTF) $(OBJS)
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(LIBFT):
-		@make b -C libs/libft
+		@make -C libs/libft
 
 $(PRINTF):
 		@make -C libs/printf_fd

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/27 16:28:32 by mtavares          #+#    #+#             */
+/*   Updated: 2022/06/13 15:14:56 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+void	ft_lstclear(t_list **lst, void (*del)(int))
 {
-	t_list	*tmp;
+	t_list	*temp;
 
-	if (stack)
+	while (*lst)
 	{
-		if (*stack)
-		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
-		}
+		temp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
 	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
 }

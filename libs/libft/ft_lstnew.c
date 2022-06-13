@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/25 18:41:14 by mtavares          #+#    #+#             */
+/*   Updated: 2022/06/13 15:15:57 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+t_list	*ft_lstnew(int content)
 {
-	t_list	*tmp;
+	t_list	*new;
 
-	if (stack)
-	{
-		if (*stack)
-		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
-		}
-	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new -> content = content;
+	new -> next = NULL;
+	return (new);
 }

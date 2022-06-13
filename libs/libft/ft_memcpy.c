@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/14 19:02:27 by mtavares          #+#    #+#             */
+/*   Updated: 2022/02/25 16:51:40 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	t_list	*tmp;
+	size_t	i;
 
-	if (stack)
+	i = 0;
+	if (!dst && !src)
+		return (NULL);
+	while (i < n)
 	{
-		if (*stack)
-		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
-		}
+		*(char *)(dst + i) = *(char *)(src + i);
+		i++;
 	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	return (dst);
 }

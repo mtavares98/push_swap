@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/12 18:13:21 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:16:57 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,6 @@ static int	duplicate(t_list **a, int n)
 	return (0);
 }
 
-static t_list	**lstadd_new_back(t_list **a, int n, int b)
-{
-	t_list	*new;
-
-	if (b != 0)
-	{
-		new = ft_lstnew(n);
-		ft_lstadd_back(a, new);
-		return (a);
-	}
-	*a = ft_lstnew(n);
-	return (a);
-}
-
 void	parse_args(t_list **a, char **av)
 {
 	char		b;
@@ -87,7 +73,7 @@ void	parse_args(t_list **a, char **av)
 				exit_prog(a, 1);
 			if (b && duplicate(a, n))
 				exit_prog(a, i);
-			a = lstadd_new_back(a, n, b);
+			ft_lstadd_back(a, ft_lstnew(n));
 			b = 1;
 		}
 	}	

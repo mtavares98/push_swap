@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/14 19:17:53 by mtavares          #+#    #+#             */
+/*   Updated: 2022/03/04 17:52:56 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	t_list	*tmp;
+	char		*d;
+	const char	*s;
 
-	if (stack)
+	d = dest;
+	s = src;
+	if (!d && !s)
+		return (NULL);
+	if (d < s)
 	{
-		if (*stack)
-		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
-		}
+		while (len--)
+			*d++ = *s++;
 	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	else
+	{
+		d = d + (len - 1);
+		s = s + (len - 1);
+		while (len--)
+			*d-- = *s--;
+	}
+	return (dest);
 }

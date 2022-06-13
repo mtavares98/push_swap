@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/27 17:55:48 by mtavares          #+#    #+#             */
+/*   Updated: 2022/06/13 15:15:36 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int))
 {
-	t_list	*tmp;
+	t_list	*temp;
+	t_list	*new;
 
-	if (stack)
+	new = NULL;
+	if (!lst || !f)
+		return (NULL);
+	while (lst)
 	{
-		if (*stack)
+		temp = ft_lstnew(f(lst->content));
+		if (!temp)
 		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
+			ft_lstclear(&new, del);
+			return (NULL);
 		}
+		ft_lstadd_back(&new, temp);
+		lst = lst->next;
 	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	return (new);
 }

@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/17 13:35:29 by mtavares          #+#    #+#             */
+/*   Updated: 2022/03/09 13:54:35 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+static void	ft_writenbr_fd(int n, int fd)
 {
-	t_list	*tmp;
-
-	if (stack)
-	{
-		if (*stack)
-		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
-		}
-	}
+	if (n > 9 || n < -9)
+		ft_writenbr_fd(n / 10, fd);
+	ft_putchar_fd("0123456789"[(n % 10) * ((n > 0) - (n < 0))], fd);
 }
 
-void	exit_prog(t_list **a, int i)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	if (n < 0)
+		ft_putchar_fd('-', fd);
+	ft_writenbr_fd(n, fd);
 }

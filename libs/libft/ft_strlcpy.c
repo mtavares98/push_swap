@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/14 19:31:57 by mtavares          #+#    #+#             */
+/*   Updated: 2022/02/22 11:55:46 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	t_list	*tmp;
+	size_t	i;
+	size_t	j;
 
-	if (stack)
+	j = ft_strlen(src);
+	i = 0;
+	if (dstsize > 0)
 	{
-		if (*stack)
+		while (i < dstsize - 1 && src[i])
 		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
+			dst[i] = src[i];
+			i++;
 		}
+		dst[i] = '\0';
 	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	return (j);
 }

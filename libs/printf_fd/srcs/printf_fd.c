@@ -6,12 +6,11 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:44:42 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/08 16:24:46 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:58:12 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/printf_fd.h"
-#include <limits.h>
 
 static int	putstr(char *str, char c, int is_char, t_info *info)
 {

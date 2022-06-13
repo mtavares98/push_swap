@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_list.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/11 20:37:49 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:19:46 by mtavares         ###   ########.fr       */
+/*   Created: 2022/02/15 12:17:30 by mtavares          #+#    #+#             */
+/*   Updated: 2022/02/21 11:54:33 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	free_lst(t_list **stack)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	t_list	*tmp;
+	size_t	i;
+	size_t	j;
 
-	if (stack)
+	i = 0;
+	if (!*needle)
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && i < len)
 	{
-		if (*stack)
+		j = 0;
+		while (haystack[i + j] != '\0' && haystack[i + j] == needle[j]
+			&& (i + j) < len && needle[j] != '\0')
 		{
-			while ((*stack))
-			{
-				tmp = (*stack);
-				(*stack) = (*stack)->next;
-				free(tmp);
-			}
+			if (needle[j + 1] == '\0')
+				return ((char *)&(haystack[i]));
+			j++;
 		}
+		i++;
 	}
-}
-
-void	exit_prog(t_list **a, int i)
-{
-	if (i != 0)
-		printf_fd(2, "Error\n");
-	free_lst(a);
-	exit(i);
+	return (0);
 }
