@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:56:34 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/14 14:19:28 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/14 23:42:26 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int ac, char **av)
 		algorithm_3(&a);
 	if (ac == 5 || ac == 6)
 		algoritm_4_5(&a, &b);
+	if (ac > 6)
+		algorithm_big(&a, &b);
 	exit_prog(&a, &b, 0);
-	return (0);
 }

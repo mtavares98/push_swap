@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:51:05 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 22:00:27 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/14 21:43:05 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,20 @@
 
 /* Typedefs */
 
+typedef struct s_ps	t_ps;
+
 /* Principal struct */
+
+struct s_ps
+{
+	t_list	*tmp;
+	int		max;
+	int		min;
+	int		max_bits;
+	int		len;
+	int		i;
+	int		j;
+};
 
 /* Functions */
 
@@ -32,6 +45,7 @@ void	have_max_min(t_list *a, int *max, int *min);
 void	algorithm_2(t_list **a);
 void	algorithm_3(t_list **a);
 void	algoritm_4_5(t_list **a, t_list **b);
+void	algorithm_big(t_list **a, t_list **b);
 void	swap_a(t_list **a);
 void	swap_b(t_list **b);
 void	swap_all(t_list **a, t_list **b);

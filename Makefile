@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 22:39:34 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/14 00:52:48 by mtavares         ###   ########.fr        #
+#    Updated: 2022/06/15 00:31:58 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PRINTF		=	libs/printf_fd/libprintf_fd.a
 
 NAME		=	push_swap
 
-CC			=	clang -g
+CC			=	gcc -fsanitize=address
 
 CFLAGS		=	-Wall -Wextra -Werror
 
