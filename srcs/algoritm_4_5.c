@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:13:52 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 23:41:08 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:22:25 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	algoritm_4_5(t_list **a, t_list **b)
 		rotate_a(a);
 	push_b(b, a);
 	algorithm_3(a);
+	if ((*b)->content < (*b)->next->content)
+		rotate_b(b);
 	push_a(a, b);
 	rotate_a(a);
 	push_a(a, b);
