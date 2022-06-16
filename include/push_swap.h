@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:51:05 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/14 21:43:05 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/16 15:41:45 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	exit_prog(t_list **a, t_list **b, int i);
 int		is_finished(t_list *a, t_list *b);
 void	parse_args(t_list **a, char **av);
 void	have_max_min(t_list *a, int *max, int *min);
+int		last_value(t_list *a);
 void	algorithm_2(t_list **a);
 void	algorithm_3(t_list **a);
 void	algoritm_4_5(t_list **a, t_list **b);

@@ -6,72 +6,89 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:42:30 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/15 00:56:45 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:05:31 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	radix_sort(t_list **a, t_list **b, t_ps ps)
+static int	get_average(t_list *a)
 {
-	ps.i = -1;
-	ps.len = ft_lstsize(*a);
-	while (++ps.i < ps.max_bits)
+	int	counter;
+	int	sum;
+
+	counter = 0;
+	sum = 0;
+	while (a)
 	{
-		ps.j = 0;
-		while (ps.j++ < ps.len)
+		counter++;
+		sum += a->content;
+		a = a->next;
+	}
+	return (sum / counter);
+}
+
+static int	compare_average(t_list *a, int average)
+{
+	while (a)
+	{
+		if (a->content < average)
+			return (1);
+		a = a->next;
+	}
+	return (0);
+}
+
+void	algorithm_big_2(t_list **a, t_list **b, t_list *average)
+{
+	t_list	*tmp;
+
+	if ((*a)->content > (*a)->next->content)
+		swap_a(a);
+	push_b(b, a);
+	free(ft_lstlast(average));
+	tmp = ft_lstlast(average);
+	while (average)
+	{
+		if ((*b)->content > tmp->content)
 		{
-			ps.tmp = *a;
-			if ((ps.tmp->content >> ps.i) == 1)
-				rotate_a(a);
-			else
-				push_b(b, a);
+			if ((*a)->content == (*b)->content + 1)
+				push_a(a, b);
+			else if ((*a)->content == ft_lstlast(*b) + 1)
+			{
+				rotate_inv_b(b);
+				push_a(a, b);
+			}
 		}
-		while (ft_lstsize(*b) != 0)
-			push_a(a, b);
+		else
+			rotate_b(b);
+		free(ft_lstlast(average));
+		tmp = ft_lstlast(average);
 	}
-}
-
-void	get_max_bits(t_ps *ps)
-{
-	ps->max_bits = -1;
-	while ((ps->max >> ++ps->max_bits) != 0)
-		;
-}
-
-void	rest(t_list **a, t_ps *ps)
-{
-	ps->tmp = *a;
-	while (ps->tmp)
-	{
-		ps->tmp->content -= (ps->min * -1);
-		ps->tmp = ps->tmp->next;
-	}
-}
-
-void	add(t_list **a, t_ps *ps)
-{
-	ps->tmp = *a;
-	while (ps->tmp)
-	{
-		ps->tmp->content += (ps->min * -1);
-		ps->tmp = ps->tmp->next;
-	}
-	ps->max += (ps->min * -1);
 }
 
 void	algorithm_big(t_list **a, t_list **b)
 {
-	t_ps	ps;
+	t_list		*average;
+	t_list		*tmp;
 
-	(void)b;
-	ps.max = INT_MIN;
-	ps.min = INT_MAX;
-	have_max_min(*a, &ps.max, &ps.min);
-	if (ps.min < 0)
-		add(a, &ps);
-	get_max_bits(&ps);
-	printf_fd(1, "max_bits = %i\n", ps.max_bits);
-	radix_sort(a, b, ps);
-	rest(a, &ps);
+	while (ft_lstsize(*a) != 2)
+	{
+		ft_lstadd_back(&average, get_average(*a));
+		tmp = ft_lstlast(average);
+		while (compare_average(*a, tmp->content))
+		{
+			if ((*a)->content < tmp->content)
+				push_b(b, a);
+			else if (last_value(*a) < tmp->content)
+			{
+				rotate_inv_a(a);
+				push_b(b, a);
+			}
+			else
+				rotate_a(a);
+		}
+		tmp = tmp->next;
+	}
+	algorithm_big_2(a, b, average);
 }
