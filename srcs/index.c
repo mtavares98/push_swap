@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 18:36:25 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/17 19:01:45 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/17 20:37:09 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ void	put_index(t_list **a)
 	int		i;
 
 	i = 0;
-	min = INT_MAX;
-	tmp = *a;
 	while (++i <= ft_lstsize(*a))
 	{
+		tmp = *a;
+		min = INT_MAX;
 		while (tmp)
 		{
 			if (min > tmp->content && tmp->index == 0)
 				min = tmp->content;
 			tmp = tmp->next;
 		}
-		while (tmp->content != min)
+		tmp = *a;
+		while (tmp && tmp->content != min)
 			tmp = tmp->next;
-		tmp->index = min;
+		tmp->index = i;
 	}
 }

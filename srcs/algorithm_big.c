@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:42:30 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/17 18:52:51 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/17 20:40:35 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	algorithm_big(t_list **a, t_list **b)
 	ps.min = INT_MAX;
 	have_max_min(*a, &ps.max, &ps.min);
 	get_max_bits(&ps);
-	printf_fd(1, "max_bits = %i\n", ps.max_bits);
 	radix_sort(a, b, ps);
 }

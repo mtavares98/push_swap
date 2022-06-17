@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:56:34 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/17 19:01:59 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/17 21:06:04 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,16 @@
 
 int	main(int ac, char **av)
 {
-	t_list	*tmp;
 	t_list	*b;
 	t_list	*a;
 
 	a = NULL;
 	b = NULL;
-	if (ac < 2)
-		exit_prog(&a, &b, 1);
+	if (ac == 1)
+		exit(0);
 	parse_args(&a, av);
 	put_index(&a);
-	tmp = a;
-	printf_fd(1, "-------Stack A-------\n");
-	while (tmp)
-	{
-		printf_fd(1, "content = %i\tindex = %i\n", tmp->content, tmp->index);
-		tmp = tmp->next;
-	}
-	/* if (is_finished(a, NULL) == 1)
+	if (is_finished(a, NULL) == 1)
 		exit_prog(&a, &b, 0);
 	if (ac == 3)
 		algorithm_2(&a);
@@ -41,5 +33,5 @@ int	main(int ac, char **av)
 		algoritm_4_5(&a, &b);
 	if (ac > 6)
 		algorithm_big(&a, &b);
-	exit_prog(&a, &b, 0); */
+	exit_prog(&a, &b, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/17 18:51:11 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/17 20:58:32 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static void	new_node(t_list **a, int n)
 		exit_prog(a, NULL, 1);
 	new_node->content = n;
 	new_node->index = 0;
+	new_node->next = NULL;
 	ft_lstadd_back(a, new_node);
+	if (!a)
+		exit_prog(a, NULL, 1);
 }
 
 static long	atoi_parse(char **str)
@@ -78,6 +81,8 @@ void	parse_args(t_list **a, char **av)
 	n = 0;
 	while (av[++i])
 	{
+		if (av[i][0] == '\0')
+			exit_prog(a, NULL, 1);
 		while (av[i][0])
 		{
 			n = atoi_parse(&av[i]);
