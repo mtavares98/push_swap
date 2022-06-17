@@ -6,11 +6,23 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 20:23:17 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/17 18:51:11 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+static void	new_node(t_list **a, int n)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		exit_prog(a, NULL, 1);
+	new_node->content = n;
+	new_node->index = 0;
+	ft_lstadd_back(a, new_node);
+}
 
 static long	atoi_parse(char **str)
 {
@@ -73,7 +85,7 @@ void	parse_args(t_list **a, char **av)
 				exit_prog(a, NULL, 1);
 			if (b && duplicate(a, n))
 				exit_prog(a, NULL, 1);
-			ft_lstadd_back(a, ft_lstnew(n));
+			new_node(a, n);
 			b = 1;
 		}
 	}	

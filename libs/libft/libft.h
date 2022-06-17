@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:05:50 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 15:14:48 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/17 18:48:02 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_list
 {
 	int				content;
+	int				index;
 	struct s_list	*next;
 }		t_list;
 

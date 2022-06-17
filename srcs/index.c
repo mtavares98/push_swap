@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algoritm_4_5.c                                     :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 20:13:52 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/17 18:58:10 by mtavares         ###   ########.fr       */
+/*   Created: 2022/06/17 18:36:25 by mtavares          #+#    #+#             */
+/*   Updated: 2022/06/17 19:01:45 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	algoritm_4_5(t_list **a, t_list **b)
+void	put_index(t_list **a)
 {
+	t_list	*tmp;
 	int		min;
-	int		max;
+	int		i;
 
-	max = INT_MIN;
+	i = 0;
 	min = INT_MAX;
-	have_max_min(*a, &max, &min);
-	while ((*a)->index != min && (*a)->index != max)
-		rotate_a(a);
-	push_b(b, a);
-	while ((*a)->index != max && (*a)->index != min)
-		rotate_a(a);
-	push_b(b, a);
-	algorithm_3(a);
-	if ((*b)->index < (*b)->next->index)
-		rotate_b(b);
-	push_a(a, b);
-	rotate_a(a);
-	push_a(a, b);
+	tmp = *a;
+	while (++i <= ft_lstsize(*a))
+	{
+		while (tmp)
+		{
+			if (min > tmp->content && tmp->index == 0)
+				min = tmp->content;
+			tmp = tmp->next;
+		}
+		while (tmp->content != min)
+			tmp = tmp->next;
+		tmp->index = min;
+	}
 }

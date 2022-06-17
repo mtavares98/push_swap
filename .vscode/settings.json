@@ -1,6 +1,12 @@
 {
 	"files.associations": {
 		"file1": "plaintext",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"__config": "c",
+		"ios": "c",
+		"__tuple": "c",
+		"chrono": "c",
+		"string": "c",
+		"vector": "c"
 	}
 }
