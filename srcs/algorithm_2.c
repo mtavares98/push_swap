@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:06:14 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/13 20:10:27 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:11:15 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	algorithm_2(t_list **a)
 {
-	if ((*a)->content > (*a)->next->content)
+	if ((*a)->index > (*a)->next->index)
 		swap_a(a);
 }

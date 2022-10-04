@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:44:38 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/15 00:12:18 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/19 15:28:42 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	push_a(t_list **a, t_list **b)
 	t_list	*tmp;
 	t_list	*tmp2;
 
+	if (!*b)
+		return ;
 	tmp2 = (*a);
 	tmp = (*b)->next;
 	ft_lstadd_front(a, *b);
@@ -30,6 +32,8 @@ void	push_b(t_list **b, t_list **a)
 	t_list	*tmp;
 	t_list	*tmp2;
 
+	if (!*a)
+		return ;
 	tmp2 = (*b);
 	tmp = (*a)->next;
 	ft_lstadd_front(b, *a);

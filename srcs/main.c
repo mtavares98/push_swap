@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:56:34 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/17 21:06:04 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:12:48 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@ int	main(int ac, char **av)
 		exit(0);
 	parse_args(&a, av);
 	put_index(&a);
-	if (is_finished(a, NULL) == 1)
+	if (is_finished(a, b))
 		exit_prog(&a, &b, 0);
-	if (ac == 3)
+	if (ft_lstsize(a) == 2)
 		algorithm_2(&a);
-	if (ac == 4)
+	if (ft_lstsize(a) == 3)
 		algorithm_3(&a);
-	if (ac == 5 || ac == 6)
+	if (ft_lstsize(a) == 4 || ft_lstsize(a) == 5)
 		algoritm_4_5(&a, &b);
-	if (ac > 6)
+	if (ft_lstsize(a) > 5)
 		algorithm_big(&a, &b);
 	exit_prog(&a, &b, 0);
+	return (0);
 }

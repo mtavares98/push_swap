@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 14:11:59 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/12 14:17:06 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:46:25 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_ordered(t_list *stack)
 {
 	while (stack->next)
 	{
-		if (stack->content > stack->next->content)
+		if (stack->index > stack->next->index)
 			return (0);
 		stack = stack->next;
 	}
