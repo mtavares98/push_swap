@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/06/21 17:58:47 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:04:01 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ static long	atoi_parse(char **str)
 			return (2147483648);
 		*str += 1;
 	}
-	if (!((**str > 8 && **str < 14) || **str == 32) && **str != '\0')
+	while ((**str > 8 && **str < 14) || **str == 32)
+				*str += 1;
+	if (**str != '\0' && **str < '0' && **str > '9')
 		return (2147483648);
 	return (n);
 }
@@ -72,14 +74,13 @@ void	parse_args(t_list **a, char **av)
 	while (av[++i])
 	{
 		s = av[i];
-		while ((*s > 8 && *s < 14) || *s == 32)
-				s++;
-		if (!*s || ((*s == '+' || *s == '-') && !s[1]))
-			exit_prog(a, NULL, 1);
 		while (*s)
 		{
 			while ((*s > 8 && *s < 14) || *s == 32)
 				s++;
+			if (!*s || ((*s == '-' || *s == '+') && \
+			(*(s + 1) < '0' || *(s + 1) > '9')))
+				exit_prog(a, NULL, 1);
 			n = atoi_parse(&s);
 			if (n > INT_MAX)
 				exit_prog(a, NULL, 1);
@@ -87,5 +88,5 @@ void	parse_args(t_list **a, char **av)
 				exit_prog(a, NULL, 1);
 			new_node(a, n);
 		}
-	}	
+	}
 }
