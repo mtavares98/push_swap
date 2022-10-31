@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/10/28 18:04:01 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:45:21 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static long	atoi_parse(char **str)
 
 	s = 1;
 	n = 0;
+	while ((**str > 8 && **str < 14) || **str == 32)
+		*str += 1;
 	if (**str == '-' || **str == '+')
 	{
 		if (**str == '-')
@@ -46,9 +48,7 @@ static long	atoi_parse(char **str)
 		*str += 1;
 	}
 	while ((**str > 8 && **str < 14) || **str == 32)
-				*str += 1;
-	if (**str != '\0' && **str < '0' && **str > '9')
-		return (2147483648);
+		*str += 1;
 	return (n);
 }
 
@@ -61,6 +61,24 @@ static int	duplicate(t_list *a, int n)
 		a = a->next;
 	}
 	return (0);
+}
+
+static int	is_nbr(char *s)
+{
+	int	i;
+
+	i = -1;
+	while ((s[++i] > 8 && s[i] < 14) || s[i] == 32)
+		;
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	if (s[i] < '0' && s[i] > '9')
+		return (0);
+	while (s[i] >= '0' && s[i] <= '9')
+		i++;
+	if (s[i] != '\0' && ((s[i] < 9 && s[i] > 15) || s[i] != 32))
+		return (0);
+	return (1);
 }
 
 void	parse_args(t_list **a, char **av)
@@ -76,10 +94,7 @@ void	parse_args(t_list **a, char **av)
 		s = av[i];
 		while (*s)
 		{
-			while ((*s > 8 && *s < 14) || *s == 32)
-				s++;
-			if (!*s || ((*s == '-' || *s == '+') && \
-			(*(s + 1) < '0' || *(s + 1) > '9')))
+			if (!is_nbr(s))
 				exit_prog(a, NULL, 1);
 			n = atoi_parse(&s);
 			if (n > INT_MAX)
