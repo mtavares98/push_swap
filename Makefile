@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
+#    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 22:39:34 by mtavares          #+#    #+#              #
-#    Updated: 2022/06/19 13:33:29 by mtavares         ###   ########.fr        #
+#    Updated: 2022/10/31 16:53:27 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ PRINTF		=	libs/printf_fd/libprintf_fd.a
 
 NAME		=	push_swap
 
-CC			=	gcc -g
+CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g -fsanitize=address
 
 RM			=	rm -rf
 
@@ -58,4 +58,4 @@ fclean:		clean
 re:			fclean all
 
 .SILENT: all clean fclean re
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

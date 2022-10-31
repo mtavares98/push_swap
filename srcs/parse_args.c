@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:19:21 by mtavares          #+#    #+#             */
-/*   Updated: 2022/10/31 16:45:21 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:57:54 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	is_nbr(char *s)
 		;
 	if (s[i] == '-' || s[i] == '+')
 		i++;
-	if (s[i] < '0' && s[i] > '9')
+	if (s[i] < '0' || s[i] > '9')
 		return (0);
 	while (s[i] >= '0' && s[i] <= '9')
 		i++;
@@ -92,6 +92,8 @@ void	parse_args(t_list **a, char **av)
 	while (av[++i])
 	{
 		s = av[i];
+		if (!*s)
+			exit_prog(a, NULL, 1);
 		while (*s)
 		{
 			if (!is_nbr(s))
